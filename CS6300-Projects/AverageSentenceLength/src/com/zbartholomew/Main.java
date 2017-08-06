@@ -48,5 +48,8 @@ public class Main {
                     "delimiters: " + delimiters + "\n" +
                     "word length limit: " + wordLengthLimit);
         }
+
+        AverageSentenceLength avgLength = new AverageSentenceLength(filepath, delimiters, wordLengthLimit);
+        System.out.println(avgLength.computeAverageSentenceLength());
     }
 }

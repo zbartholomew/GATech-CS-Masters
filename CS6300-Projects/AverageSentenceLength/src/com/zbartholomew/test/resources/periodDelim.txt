@@ -1,0 +1,6 @@
+This is a Test of period delim..
+Spaces are between the period .
+count this and this, .
+why not this as well .
+and this .
+this too.
