@@ -18,10 +18,11 @@ public class AverageSentenceLength {
         } else {
             this.delimiters = parseDelimiters(delimiters);
         }
-        if (wordLengthLimit >= 0) {
+        if (wordLengthLimit >= 1) {
             this.wordLengthLimit = wordLengthLimit;
         } else {
-            throw new IllegalArgumentException("Word length limit must be non negative");
+            throw new IllegalArgumentException("Word length limit must be 1 or greater." +
+                    "  This value represents the the length of a word we will consider to be a word.");
         }
     }
 
@@ -38,7 +39,7 @@ public class AverageSentenceLength {
             words = sentence.split("[\r\n\\s]");
 
             for (String word : words) {
-                if (word.length() > wordLengthLimit) {
+                if (word.length() >= wordLengthLimit && !word.equals("\"")) {
                     wordCount++;
                 }
             }

@@ -7,11 +7,11 @@ public class Main {
     public static void main(String[] args) {
 
         String filepath = "", delimiters = "";
-        int wordLengthLimit = 0;
+        int wordLengthLimit = 1;
 
         // check if command line arguments are present
         if (args.length > 0) {
-            for (int i = 0; i < args.length - 1; i++) {
+            for (int i = 0; i < args.length; i++) {
                 String token = args[i];
 
                 if (token.startsWith("-d")) {
@@ -19,10 +19,15 @@ public class Main {
                     i++;
 
                 } else if (token.startsWith("w/-l")) {
-                    wordLengthLimit = Integer.parseInt(args[i + 1]);
+                    try {
+                        wordLengthLimit = Integer.parseInt(args[i + 1]);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Word length limit is not a number");
+                        return;
+                    }
                     i++;
 
-                } else if (token.startsWith("/")) {
+                } else {
                     filepath = token;
                 }
             }

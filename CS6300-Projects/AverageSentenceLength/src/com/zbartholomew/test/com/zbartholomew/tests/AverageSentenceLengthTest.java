@@ -13,7 +13,7 @@ public class AverageSentenceLengthTest {
     @Test
     public void testComputeAverageSentenceLength1() {
         String delimiters = ".";
-        int wordLength = 0;
+        int wordLength = 1;
         asl = new AverageSentenceLength(fileDir + "multi.txt", delimiters, wordLength);
         assertEquals(10, asl.computeAverageSentenceLength(), 0);
     }
@@ -21,7 +21,7 @@ public class AverageSentenceLengthTest {
     @Test
     public void testComputeAverageSentenceLength2() {
         String delimiters = "|%";
-        int wordLength = 0;
+        int wordLength = 1;
         asl = new AverageSentenceLength(fileDir + "file.txt", delimiters, wordLength);
         assertEquals(1, asl.computeAverageSentenceLength(), 0);
     }
@@ -29,9 +29,10 @@ public class AverageSentenceLengthTest {
     @Test
     public void testComputeAverageSentenceLength3() {
         String delimiters = "";
-        int wordLength = 0;
+        int wordLength = 1;
+        // essay has 547 words above word length 0 and 43 sentences
         asl = new AverageSentenceLength(fileDir + "essay.txt", delimiters, wordLength);
-        assertEquals(10, asl.computeAverageSentenceLength(), 0);
+        assertEquals(12.72, asl.computeAverageSentenceLength(), 0);
     }
 
     @Test
@@ -39,15 +40,15 @@ public class AverageSentenceLengthTest {
         String delimiters = ".";
         int wordLength = 5;
         asl = new AverageSentenceLength(fileDir + "essay.txt", delimiters, wordLength);
-        assertEquals(4, asl.computeAverageSentenceLength(), 0);
+        assertEquals(5.29, asl.computeAverageSentenceLength(), 0);
     }
 
     @Test
     public void testComputeAverageSentenceLength5() {
         String delimiters = "/|";
-        int wordLength = 1;
+        int wordLength = 2;
         asl = new AverageSentenceLength(fileDir + "numbers.txt", delimiters, wordLength);
-        assertEquals(1, asl.computeAverageSentenceLength(), 0);
+        assertEquals(.8, asl.computeAverageSentenceLength(), 0);
     }
 
     // Test to verify if the different delimiters specified.
@@ -56,7 +57,7 @@ public class AverageSentenceLengthTest {
         String delimiters = "?";
         int wordLength = 4;
         asl = new AverageSentenceLength(fileDir + "questionDelim.txt", delimiters, wordLength);
-        assertEquals(2, asl.computeAverageSentenceLength(), 0);
+        assertEquals(2.75, asl.computeAverageSentenceLength(), 0);
     }
 
     @Test
@@ -70,24 +71,24 @@ public class AverageSentenceLengthTest {
     @Test
     public void verifyExclamationDelimiters() {
         String delimiters = "!";
-        int wordLength = 2;
+        int wordLength = 1;
         asl = new AverageSentenceLength(fileDir + "exclamationDelimited.txt", delimiters, wordLength);
-        assertEquals(15, asl.computeAverageSentenceLength(), 0);
+        assertEquals(4, asl.computeAverageSentenceLength(), 0);
 
     }
 
     @Test
     public void verifySemicolonDelimiters() {
         String delimiters = ";";
-        int wordLength = 0;
+        int wordLength = 1;
         asl = new AverageSentenceLength(fileDir + "semicolonDelim.txt", delimiters, wordLength);
-        assertEquals(11, asl.computeAverageSentenceLength(), 0);
+        assertEquals(4.5, asl.computeAverageSentenceLength(), 0);
     }
 
     @Test
     public void verifyPeriodDelimiters() {
         String delimiters = ".";
-        int wordLength = 0;
+        int wordLength = 1;
         asl = new AverageSentenceLength(fileDir + "periodDelim.txt", delimiters, wordLength);
         assertEquals(4.17, asl.computeAverageSentenceLength(), 0);
 
@@ -96,7 +97,7 @@ public class AverageSentenceLengthTest {
     @Test
     public void verifyRequirements() {
         String delimiters = "";
-        int wordLength = 0;
+        int wordLength = 1;
         asl = new AverageSentenceLength(fileDir + "requirementDocEx.txt", delimiters, wordLength);
         assertEquals(5, asl.computeAverageSentenceLength(), 0);
 
@@ -137,7 +138,7 @@ public class AverageSentenceLengthTest {
         String delimiters = ":";
         int wordLength = 1;
         asl = new AverageSentenceLength(fileDir + "roundingLogicEx.txt", delimiters, wordLength);
-        assertEquals(1, asl.computeAverageSentenceLength(), 0);
+        assertEquals(1.9, asl.computeAverageSentenceLength(), 0);
     }
 
     @Test
